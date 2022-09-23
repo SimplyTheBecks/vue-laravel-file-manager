@@ -45,9 +45,9 @@ export default {
    * @param dispatch
    * @param term  - search ter,
    */
-  refreshDirectory({ state, commit, dispatch }, term = null) {
+  async refreshDirectory({ state, commit, dispatch }, term = null) {
     let method = term == null ? 'content' : 'search'
-    GET[method](state.selectedDisk, term ? term : state.selectedDirectory).then((response) => {
+    await GET[method](state.selectedDisk, term ? term : state.selectedDirectory).then((response) => {
       commit('resetSelected');
       commit('resetSortSettings');
       commit('resetHistory');
@@ -135,10 +135,11 @@ export default {
    * TODO:: it makes sense to redo and simplify.
    * @param state
    * @param dispatch
+   * @param commit
    * @param type
    * @param path
    */
-  selectMassByShift({ state, dispatch }, { type, path}) {
+  selectMassByShift({commit, state, dispatch }, { type, path}) {
     let selectedKey = state[type].findIndex((obj) => obj.path === path);
 
     if (state.selected[type].length > 0) {
@@ -167,20 +168,20 @@ export default {
       if (newType == 'directories'){
         state[newType].forEach((item, k) => {
           if (alreadySelectedKey <= k)
-            dispatch('selectByState', {commit, item})
+            dispatch('selectByState', { item})
         });
         state[type].forEach((item, k) => {
           if (selectedKey >= k)
-            dispatch('selectByState', {commit, item})
+            dispatch('selectByState', { item})
         });
       } else {
         state[newType].forEach((item, k) => {
           if (alreadySelectedKey >= k)
-            dispatch('selectByState', {commit, item})
+            dispatch('selectByState', { item})
         });
         state[type].forEach((item, k) => {
           if (selectedKey <= k)
-            dispatch('selectByState', {commit, item})
+            dispatch('selectByState', { item})
         });
       }
     }

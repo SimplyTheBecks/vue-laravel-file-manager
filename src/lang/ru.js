@@ -30,7 +30,8 @@ const ru = {
     search: 'Поиск'
   },
   common:{
-    preloader: 'Загрузка'
+    preloader: 'Загрузка',
+    dragging: 'Перетещите файл сюда',
   },
   clipboard: {
     actionType: 'Тип операции',
