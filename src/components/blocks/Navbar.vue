@@ -229,6 +229,7 @@ export default {
        * Search
        */
       search() {
+          this.$store.commit('fm/setPreloaderCondition', true);
           this.$store.dispatch('fm/search');
       },
 

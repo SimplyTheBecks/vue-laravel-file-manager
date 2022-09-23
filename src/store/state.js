@@ -29,4 +29,10 @@ export default {
   // search term
   searchTerm: '',
 
+  // preloader
+  preloader: false,
+
+  // files from drag and drop FM
+  filesFromDrag: []
+
 };

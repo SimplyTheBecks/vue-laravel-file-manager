@@ -29,6 +29,9 @@ const ru = {
   placeholders:{
     search: 'Поиск'
   },
+  common:{
+    preloader: 'Загрузка'
+  },
   clipboard: {
     actionType: 'Тип операции',
     copy: 'Копировать',

@@ -207,7 +207,18 @@ export default {
       return this.$store.state.fm.settings.maxFileUploads === null || this.newFiles.length <= this.$store.state.fm.settings.maxFileUploads;
     },
 
+      filesFromDrag() {
+        this.newFiles = this.$store.state.fm.filesFromDrag
+        return this.$store.state.fm.filesFromDrag ;
+    },
+
   },
+    watch:{
+        // when user drop file to FM we catch this files here
+        filesFromDrag(){
+            this.newFiles =  this.filesFromDrag
+        }
+    },
   methods: {
     /**
      * Select file or files

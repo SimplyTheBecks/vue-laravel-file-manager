@@ -130,4 +130,79 @@ export default {
         break;
     }
   },
+
+  /**
+   * TODO:: it makes sense to redo and simplify.
+   * @param state
+   * @param dispatch
+   * @param type
+   * @param path
+   */
+  selectMassByShift({ state, dispatch }, { type, path}) {
+    let selectedKey = state[type].findIndex((obj) => obj.path === path);
+
+    if (state.selected[type].length > 0) {
+      let alreadySelectedPath = state.selected[type][0];
+      let alreadySelectedKey = state[type].findIndex((obj) => obj.path === alreadySelectedPath);
+      var startKey = 0;
+      var endKey = 0;
+      if (selectedKey < alreadySelectedKey) {
+        startKey = alreadySelectedKey;
+        endKey = selectedKey;
+      } else {
+        startKey = selectedKey;
+        endKey = alreadySelectedKey;
+      }
+
+      state[type].forEach((item, k) => {
+        if (startKey >= k && endKey <= k) {
+          dispatch('selectByState', { item})
+        }
+      });
+   } else {
+      let newType = type == 'files' ? 'directories' : 'files';
+      let alreadySelectedPath = state.selected[newType][0];
+      let alreadySelectedKey = state[newType].findIndex((obj) => obj.path === alreadySelectedPath);
+
+      if (newType == 'directories'){
+        state[newType].forEach((item, k) => {
+          if (alreadySelectedKey <= k)
+            dispatch('selectByState', {commit, item})
+        });
+        state[type].forEach((item, k) => {
+          if (selectedKey >= k)
+            dispatch('selectByState', {commit, item})
+        });
+      } else {
+        state[newType].forEach((item, k) => {
+          if (alreadySelectedKey >= k)
+            dispatch('selectByState', {commit, item})
+        });
+        state[type].forEach((item, k) => {
+          if (selectedKey <= k)
+            dispatch('selectByState', {commit, item})
+        });
+      }
+    }
+
+  },
+
+  /**
+   * Checking file type and set commit to setSelected
+   * @param commit
+   * @param item
+   */
+  selectByState({ commit }, { item }) {
+    let type = item.type;
+    if (item.type == 'file') {
+      type = 'files';
+    } else if (item.type == 'dir') {
+      type = 'directories';
+    }
+    let path = item.path;
+    commit(`setSelected`, {
+      type,
+      path
+    });
+  }
 };

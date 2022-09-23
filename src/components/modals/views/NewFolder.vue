@@ -1,31 +1,32 @@
 <template>
     <div class="modal-content fm-modal-folder">
-        <div class="modal-header">
-            <h5 class="modal-title">{{ lang.modal.newFolder.title }}</h5>
-            <button type="button" class="close" aria-label="Close" v-on:click="hideModal">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="fm-folder-name">{{ lang.modal.newFolder.fieldName }}</label>
-                <input type="text" class="form-control" id="fm-folder-name"
-                       v-focus
-                       v-bind:class="{'is-invalid': directoryExist}"
-                       v-model="directoryName"
-                       v-on:keyup="validateDirName">
-                <div class="invalid-feedback" v-show="directoryExist">
-                    {{ lang.modal.newFolder.fieldFeedback }}
+        <form @submit.prevent="addFolder">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ lang.modal.newFolder.title }}</h5>
+                <button type="button" class="close" aria-label="Close" v-on:click="hideModal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="fm-folder-name">{{ lang.modal.newFolder.fieldName }}</label>
+                    <input type="text" class="form-control" id="fm-folder-name"
+                           v-focus
+                           v-bind:class="{'is-invalid': directoryExist}"
+                           v-model="directoryName"
+                           v-on:keyup="validateDirName">
+                    <div class="invalid-feedback" v-show="directoryExist">
+                        {{ lang.modal.newFolder.fieldFeedback }}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-info"
-                    v-bind:disabled="!submitActive"
-                    v-on:click="addFolder">{{ lang.btn.submit }}
-            </button>
-            <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
-        </div>
+            <div class="modal-footer">
+                <button class="btn btn-info"
+                        v-bind:disabled="!submitActive">{{ lang.btn.submit }}
+                </button>
+                <button class="btn btn-light" v-on:click="hideModal">{{ lang.btn.cancel }}</button>
+            </div>
+        </form>
     </div>
 </template>
 
