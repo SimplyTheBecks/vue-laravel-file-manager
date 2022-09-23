@@ -20,6 +20,24 @@ export default {
   },
 
   /**
+   *
+   * @param state
+   * @param condition
+   */
+  setPreloaderCondition(state, condition) {
+    state.preloader = condition;
+  },
+
+  /**
+   *
+   * @param state
+   * @param files
+   */
+  setFilesFromDragging(state, files) {
+    state.filesFromDrag = files;
+  },
+
+  /**
    * Set clipboard
    * @param state
    * @param type

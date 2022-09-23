@@ -29,6 +29,10 @@ const en = {
   placeholders:{
     search: 'Search'
   },
+  common:{
+    preloader: 'Loading',
+    dragging: 'Drop file here',
+  },
   clipboard: {
     actionType: 'Type',
     copy: 'Copy',

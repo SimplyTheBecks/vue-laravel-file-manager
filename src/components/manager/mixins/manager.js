@@ -137,6 +137,11 @@ export default {
       // search in selected array
       const alreadySelected = this.selected[type].includes(path);
 
+      if(event.shiftKey ){
+        this.$store.dispatch(`fm/${this.manager}/selectMassByShift`, { type, path });
+        return
+      }
+
       // if pressed Ctrl -> multi select
       if ((event.ctrlKey || event.metaKey) || this.isHold) {
         if (!alreadySelected) {

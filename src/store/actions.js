@@ -491,10 +491,12 @@ export default {
    * @param dispatch
    * @returns {*}
    */
-  search({ state, commit, dispatch }) {
-    commit('left/setSelectedDirectory', null);
+  async search({ state, commit, dispatch }) {
+    await  commit('left/setSelectedDirectory', null);
     // only left manager
-    return dispatch('left/refreshDirectory', state.searchTerm);
+    await dispatch('left/refreshDirectory', state.searchTerm);
+
+    commit('setPreloaderCondition', false);
   },
 
   /**
