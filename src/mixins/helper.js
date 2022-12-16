@@ -24,7 +24,7 @@ export default {
      */
     timestampToDate(timestamp) {
       // if date not defined
-      if (timestamp === undefined) return '-';
+      if (timestamp === undefined || timestamp === false) return '-';
 
       const date = new Date(timestamp * 1000);
 
