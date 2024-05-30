@@ -234,6 +234,11 @@ export default {
 
 <style lang="scss">
   @import "~plyr/src/sass/plyr.scss";
+  @import './scss/fa/fontawesome';
+  @import './scss/bootstrap/bootstrap';
+  @import './scss/fa/solid.scss';
+  @import './scss/fa/brands.scss';
+  @import './scss/fa/regular.scss';
   .fm {
     position: relative;
     height: 100%;
