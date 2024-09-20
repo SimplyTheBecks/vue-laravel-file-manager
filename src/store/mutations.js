@@ -9,6 +9,10 @@ export default {
     state.disks = disks;
   },
 
+  setCurrentDisk(state, disk) {
+    state.currentDisc = disk;
+  },
+
 
   /**
    * Set disks

@@ -20,6 +20,8 @@ export default {
   // available disks
   disks: [],
 
+  currentDisc: '',
+
   // file callback for ckeditor, ...
   fileCallback: null,
 
@@ -33,6 +35,6 @@ export default {
   preloader: false,
 
   // files from drag and drop FM
-  filesFromDrag: []
+  filesFromDrag: [],
 
 };

@@ -1,6 +1,6 @@
 <template>
     <div class="fm-content d-flex flex-column">
-        <disk-list v-bind:manager="manager"/>
+<!--        <disk-list v-bind:manager="manager"/>-->
         <breadcrumb v-bind:manager="manager"/>
         <div class="fm-content-body" ref="managerWindow" v-on:dragover="dragging = true"
              v-on:drop   ="dragging = false"

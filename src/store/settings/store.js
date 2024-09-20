@@ -33,6 +33,9 @@ export default {
       // axios headers
       headers: {},
 
+      //current selected Disc
+      currentDisc: '',
+
       // axios default URL
       baseUrl: null,
 

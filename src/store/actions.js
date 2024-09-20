@@ -24,30 +24,34 @@ export default {
           ? response.data.config.rightDisk
           : getters.diskList[0];
 
+        if(getters.currentDisc){
+          leftDisk = getters.currentDisc
+        }
+
         // paths
         let leftPath = response.data.config.leftPath;
         let rightPath = response.data.config.rightPath;
 
         // find disk and path settings in the URL
-        if (window.location.search) {
-          const params = new URLSearchParams(window.location.search);
-
-          if (params.get('leftDisk')) {
-            leftDisk = params.get('leftDisk');
-          }
-
-          if (params.get('rightDisk')) {
-            rightDisk = params.get('rightDisk');
-          }
-
-          if (params.get('leftPath')) {
-            leftPath = params.get('leftPath');
-          }
-
-          if (params.get('rightPath')) {
-            rightPath = params.get('rightPath');
-          }
-        }
+        // if (window.location.search) {
+        //   const params = new URLSearchParams(window.location.search);
+        //
+        //   if (params.get('leftDisk')) {
+        //     leftDisk = params.get('leftDisk');
+        //   }
+        //
+        //   if (params.get('rightDisk')) {
+        //     rightDisk = params.get('rightDisk');
+        //   }
+        //
+        //   if (params.get('leftPath')) {
+        //     leftPath = params.get('leftPath');
+        //   }
+        //
+        //   if (params.get('rightPath')) {
+        //     rightPath = params.get('rightPath');
+        //   }
+        // }
 
         commit('left/setDisk', leftDisk);
 

@@ -83,6 +83,9 @@ export default {
   created() {
     // manual settings
     this.$store.commit('fm/settings/manualSettings', this.settings);
+    if (typeof this.settings.currentDisc != "undefined"){
+      this.$store.commit('fm/setCurrentDisk', this.settings.currentDisc);
+    }
 
     // initiate Axios
     this.$store.commit('fm/settings/initAxiosSettings');

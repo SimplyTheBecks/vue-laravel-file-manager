@@ -9,6 +9,15 @@ export default {
   },
 
   /**
+   *
+   * @param state
+   * @returns {string}
+   */
+  currentDisc(state) {
+    return state.currentDisc;
+  },
+
+  /**
    * Selected disk for active manager
    * @param state
    * @returns {selectedDisk|null|*|computed.selectedDisk}
